@@ -3,7 +3,7 @@
  * @Author: meijie
  * @Date: 2019-09-19 10:24:25
  * @LastEditors: meijie
- * @LastEditTime: 2019-09-19 10:48:30
+ * @LastEditTime: 2019-09-25 10:00:23
  */
 'use strict';
 
@@ -21,11 +21,17 @@ module.exports = () => {
         : err.message;
 
       // 从 error 对象上读出各个属性，设置到响应中
-      ctx.body = { error };
+      const body = {
+        error,
+      };
       if (status === 422) {
-        ctx.body.detail = err.errors;
+        // 客户端传递的参数异常
+        body.detail = err.errors;
       }
-      ctx.status = status;
+      ctx.failRes({
+        status,
+        body,
+      });
     }
   };
 };

@@ -3,7 +3,7 @@
  * @Author: meijie
  * @Date: 2019-09-19 11:58:19
  * @LastEditors: meijie
- * @LastEditTime: 2019-09-19 13:44:49
+ * @LastEditTime: 2019-09-22 15:51:21
  */
 'use strict';
 
@@ -12,7 +12,7 @@ module.exports = app => {
   const User = app.model.define('user', {
     id: { type: INTEGER, primaryKey: true, autoIncrement: true },
     name: STRING(30),
-    age: INTEGER,
+    password: STRING(255),
     head_img: STRING(100),
     created_at: DATE,
     updated_at: DATE,

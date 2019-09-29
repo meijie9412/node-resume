@@ -3,14 +3,16 @@
  * @Author: meijie
  * @Date: 2019-09-19 15:07:44
  * @LastEditors: meijie
- * @LastEditTime: 2019-09-19 16:54:46
+ * @LastEditTime: 2019-09-24 16:36:20
  */
 'use static';
 
 const { app } = require('egg-mock/bootstrap');
 const factories = require('./factories');
 
-before(() => factories(app));
+before(() => {
+  factories(app);
+});
 afterEach(async () => {
   // clear database after each test case
   await Promise.all([
